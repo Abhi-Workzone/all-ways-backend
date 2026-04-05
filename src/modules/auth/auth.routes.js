@@ -1,0 +1,12 @@
+import { Router } from 'express';
+import { signup, verifyOTP, login, refreshTokenHandler, getMe } from './auth.controller.js';
+import { validate } from '../../middlewares/validate.middleware.js';
+import { signupSchema, verifyOtpSchema, loginSchema, refreshSchema } from './auth.validation.js';
+import { authenticate } from '../../middlewares/auth.middleware.js';
+const router = Router();
+router.post('/signup', validate(signupSchema), signup);
+router.post('/verify-otp', validate(verifyOtpSchema), verifyOTP);
+router.post('/login', validate(loginSchema), login);
+router.post('/refresh', validate(refreshSchema), refreshTokenHandler);
+router.get('/me', authenticate, getMe);
+export default router;

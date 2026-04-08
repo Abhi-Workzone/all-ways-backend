@@ -11,13 +11,13 @@ const transporter = nodemailer.createTransport({
 });
 export const sendOTPEmail = async (email, otp) => {
   const mailOptions = {
-    from: `"allWays" <${config.smtp.user}>`,
+    from: `"AllWays" <${config.smtp.user}>`,
     to: email,
-    subject: 'Verify Your Email - allWays',
+    subject: 'Verify Your Email - AllWays',
     html: `
       <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 40px 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="color: #6C63FF; font-size: 28px; margin: 0;">allWays</h1>
+          <h1 style="color: #6C63FF; font-size: 28px; margin: 0;">AllWays</h1>
           <p style="color: #666; margin-top: 5px;">Your Home Services Partner</p>
         </div>
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; padding: 30px; text-align: center;">

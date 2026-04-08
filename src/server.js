@@ -13,7 +13,13 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: config.frontendUrl,
+  origin: (origin, callback) => {
+    if (!origin || config.frontendUrls.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
@@ -29,7 +35,7 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.get('/api/health', (_req, res) => {
   res.json({
     success: true,
-    message: 'allWays API is running',
+    message: 'AllWays API is running',
     timestamp: new Date().toISOString()
   });
 });

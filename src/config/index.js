@@ -16,6 +16,7 @@ const config = {
     user: process.env.SMTP_USER || 'allways.onserve@gmail.com',
     pass: process.env.SMTP_PASS || 'gqpp fdwn gsfx buvo'
   },
-  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000'
+  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+  frontendUrls: ['http://localhost:3000', 'https://zp82dm8t-3000.inc1.devtunnels.ms']
 };
 export default config;

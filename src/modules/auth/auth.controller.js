@@ -106,7 +106,7 @@ export const login = async (req, res, next) => {
       email
     });
     if (!user) {
-      throw new UnauthorizedError('Invalid email or password');
+      throw new UnauthorizedError('Invalid email please register first');
     }
     if (!user.isVerified) {
       // Resend OTP
@@ -124,7 +124,7 @@ export const login = async (req, res, next) => {
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      throw new UnauthorizedError('Invalid email or password');
+      throw new UnauthorizedError('Invalid password');
     }
     const tokenPayload = {
       userId: user._id.toString(),
